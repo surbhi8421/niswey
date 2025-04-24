@@ -3,10 +3,12 @@
 
 <div class="container py-5">
     <div class="card">
-        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <div class="card-header bg-custom text-white d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <i class="fas fa-users fa-lg me-2"></i>
-                <h4 class="mb-0"><x-title componentName="Show Contact" /></h4>
+                <h4 class="mb-0">
+                    <x-title componentName="Show Contact" />
+                </h4>
             </div>
             <div class="d-flex">
                 <a href="{{url('contacts')}}" class="btn btn-light text-primary fw-bold">
@@ -21,7 +23,7 @@
         <div class="col-sm-4">
             <label><b>Phone</b></label>
             <p>{{$showContacts->phone}}</p>
-        </div> 
+        </div>
     </div>
 </div>
 @endsection

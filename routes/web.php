@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +14,10 @@ use App\Http\Controllers\ImportController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::resource('contacts', ContactController::class);
-Route::get('import', [ImportController::class, 'index'])->name('import');
-Route::post('import/import-Xml', [ImportController::class, 'import'])->name('import.importXml');
+Route::post('contacts/import-xml', [ContactController::class, 'importXml'])->name('contacts.importXml');
+
+
+
 
 

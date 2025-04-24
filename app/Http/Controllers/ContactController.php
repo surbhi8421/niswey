@@ -15,8 +15,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-
-        $contacts = Contact::all();
+        $contacts = Contact::paginate(10);
         return view('contacts.index', compact('contacts'));
     }
 
@@ -113,5 +112,39 @@ class ContactController extends Controller
         $contact->delete();
         return redirect()->route('contacts.index')
         ->with('status',Lang::get('message.alerts.contact_deleted'));
+    }
+
+    public function importXml(Request $request) {
+
+        if ($request->file('xml_file')->getClientOriginalExtension() !== 'xml') {
+            return back()->withErrors(['xml_file' => 'The file must be an XML file.']);
+        }
+        
+        $xml = simplexml_load_file($request->file('xml_file')->getRealPath());
+
+        $skipped = [];
+        $imported = 0;
+
+        foreach ($xml->contact as $contact) {
+            $phone = (string) $contact->phone;
+            if (Contact::where('phone', $phone)->exists()) {
+                $skipped[] = $phone;
+                continue;
+            }
+            Contact::create([
+                'name' => (string) $contact->name,
+                'phone' => $phone,
+            ]);
+
+            $imported++;
+        }
+
+        $message = "Contacts imported successfully.";
+        if (!empty($skipped)) {
+            $message .= ' ' . count($skipped) . ' duplicate(s) skipped.';
+        }
+
+        return redirect()->route('contacts.index')
+            ->with('status', $message);
     }
 }

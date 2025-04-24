@@ -9,10 +9,10 @@
                 @endif
                 <div class="card">
 
-                   <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
+                   <div class="card-header bg-custom text-white d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center bg-custom ">
                             <i class="fas fa-users fa-lg me-2"></i>
-                            <h4 class="mb-0"><x-title componentName="Add New Contact" /></h4>
+                            <h4 class="mb-0 " ><x-title componentName="Add New Contact" /></h4>
                         </div>
                         <div class="d-flex">
                             <a href="{{url('contacts')}}" class="btn btn-light text-primary fw-bold">
@@ -38,7 +38,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <button  id="btn" type="submit" class="btn btn-primary">{{__('message.btn.CreateBtn')}}</button>
+                                <button  id="btn" type="submit" class="btn btn-success">{{__('message.btn.CreateBtn')}}</button>
                             </div>
                         </form>
                     </div>
