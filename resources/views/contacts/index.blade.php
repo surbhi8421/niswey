@@ -87,7 +87,7 @@
                 <div class="modal-header bg-custom text-white">
                     <h5 class="modal-title" id="importModalLabel">Import Contacts (XML)</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                        aria-label="Close">X</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
